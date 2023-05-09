@@ -52,16 +52,17 @@ class Hangman:
         
         #creating a variable that ensures user does not lose points at the end of the loop if found
         found_at_least_one = False
+        self.turn_count+=1
         i=0
         for letter in self.word_to_find:
             
             if letter == user_input:
-                print(f"found {letter} at pos {i}")
+                #print(f"found {letter} at pos {i}")
                 self.correctly_guessed_letters[i]=letter
                 found_at_least_one = True
                 
             i+=1
-            self.turn_count+=1
+            
         #Not found any letters?
         if found_at_least_one == False:
             self.wrongly_guessed_letters.append(user_input)
@@ -84,27 +85,31 @@ class Hangman:
         
         #formatting it into a list
         self.correctly_guessed_letters= [*self.correctly_guessed_letters]
-        self.split_word_to_find= [*self.word_to_find]
+        self.word_to_find= [*self.word_to_find]
         
         #to avoid confusion with a temp variable split word to find
-        self.word_to_find=self.split_word_to_find
+        self.word_to_find=self.word_to_find
 
         while self.word_to_find != self.correctly_guessed_letters:
+           
             if self.lives >0:
+                
                 self.play()
-            else:
+            elif self.lives==0:
                 self.game_over()
                 break
-        self.well_played()
+            if self.word_to_find == self.correctly_guessed_letters:
+                self.well_played()
         
         
         #summary of the stats
-        print(f"Correctly guessed letters : {self.correctly_guessed_letters}, wrongly guesssed letters : {self.wrongly_guessed_letters}, life : {self.lives}, error count : {self.error_count}, turn count : {self.error_count} ")
+        #print(f"Correctly guessed letters : {self.correctly_guessed_letters}, wrongly guesssed letters : {self.wrongly_guessed_letters}, life : {self.lives}, error count : {self.error_count}, turn count : {self.error_count} ")
         
     
-#TO DO : Doc strings, comment the code
+#TO DO : Doc strings; comment the code
 #
 #
-#TO FIX : turns somehow are adding up eachother in wellplayed, maybe convert the char list back to a string
+#TO FIX : do not accept duplicates in wrong answers; maybe convert the char list back to a string
 #
+#FIXED : Turn_count; game over message
     
