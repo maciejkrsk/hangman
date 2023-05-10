@@ -49,7 +49,6 @@ class Hangman:
         """
         Function called when the user has found all the letters in a 
         given word.
-        :print: A well played message displaying stats (word the user had to find, number of turns, error count)
         """
         print(f"You found the word : {self.word_to_find}, in  {self.turn_count} turns with {self.error_count} errors!")
     
@@ -62,7 +61,6 @@ class Hangman:
         1 : Checks the user input if it does not contain more than one character or a number
         2 : Loops through the word to find and checks if the letter given by the user is present
             is present in the word to find.
-        
         """
 
         #----User input----
@@ -116,7 +114,6 @@ class Hangman:
     def game_over(self):
        """
        Function called when the user has no more lives, it stops the game.
-       :print: Game over message
        """
        print("game over...")
     
@@ -129,11 +126,9 @@ class Hangman:
             and replaces all its characters with underscore.
         3 : Runs a while loop, the game is going on as long as the user has not found
             the correct word or user runs out of lives and calls the adequate function.
-            
-        """
+            """
         
         #generating a random number that will be used as an Index to select a word from the list
-        """"""""
         self.word_to_find = Hangman.possible_words[self.random.randint(0 , len(Hangman.possible_words)-1)]
 
         #Setting up the hidden word
