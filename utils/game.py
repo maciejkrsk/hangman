@@ -62,7 +62,7 @@ class Hangman:
         1 : Checks the user input if it does not contain more than one character or a number
         2 : Loops through the word to find and checks if the letter given by the user is present
             is present in the word to find.
-        :print: An updated list of the correctly guessed letters.
+        
         """
 
         #----User input----
@@ -139,9 +139,9 @@ class Hangman:
         #Setting up the hidden word
         self.correctly_guessed_letters = self.re.sub("[a-z]" , "_" , self.word_to_find, count = 0, flags = 0)
         
-        #formatting it into a list or characters
-        self.correctly_guessed_letters = [*self.correctly_guessed_letters]
-        self.word_to_find = [*self.word_to_find]
+        #formatting it into a list of characters
+        self.correctly_guessed_letters = list(self.correctly_guessed_letters)
+        self.word_to_find = list(self.word_to_find)
         
         #to avoid confusion with a temp variable split word to find
         self.word_to_find = self.word_to_find
