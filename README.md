@@ -10,7 +10,7 @@ Install by simply forking the repository and clone it to your machine's remote r
 ## Requirements
 
 
-This game requires random, re and List libraries
+This game requires random and re libraries
 ## Run
 
 

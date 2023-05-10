@@ -21,19 +21,22 @@ class Hangman:
 
     """
     import random
-    from typing import List
+    #from typing import List
     import re
 
 
     possible_words = ['becode', 'learning', 'mathematics', 'sessions']
     word_to_find = []
     lives = 5
-    correctly_guessed_letters=[] 
+    correctly_guessed_letters = [] 
     wrongly_guessed_letters = []
     turn_count = 0
     error_count = 0
 
     def __init__(self):
+        """
+        Function which initializes the class object with all its attributes
+        """
         self.possible_words
         self.word_to_find
         self.lives
@@ -44,11 +47,11 @@ class Hangman:
         
     
     def well_played(self):
-        """""
+        """
         Function called when the user has found all the letters in a 
         given word.
         :print: A well played message displaying stats (word the user had to find, number of turns, error count)
-        """""
+        """
         print(f"You found the word : {self.word_to_find}, in  {self.turn_count} turns with {self.error_count} errors!")
     
     
@@ -73,37 +76,41 @@ class Hangman:
             
             user_input = str(input())
             #checks if input has more than one character
-            if len(user_input)>1:
+            if len(user_input) > 1 :
                 print("Please enter only one character, retry")
+
             elif self.re.match('[0-9]| ',user_input):
                 print("No numbers or empty characters allowed, retry")
+
             else:
                 #If user complies with the rules, variable is changed to escape the loop
-                invalid_input=False
+                invalid_input = False
                 
+
         #----Valid character detected----
         #creating a variable that ensures user does not lose points at the end of the loop if found a correct letter
         found_at_least_one = False
-        self.turn_count+=1
+        self.turn_count += 1
+
         #creating an index variable to ease 
-        i=0
+        i = 0
+
         #Loop through the word to find to compare each letters
-        
-        
         for letter in self.word_to_find:
             
             if letter == user_input:
-                self.correctly_guessed_letters[i]=letter
+                self.correctly_guessed_letters[i] = letter
                 #Bool var to not lose lives if found letter
                 found_at_least_one = True
                 
-            i+=1
+            i += 1
             
         #Not found any letters
         if found_at_least_one == False:
             self.wrongly_guessed_letters.append(user_input)
-            self.error_count +=1
-            self.lives -=1
+            self.error_count += 1
+            self.lives -= 1
+
         print(self.correctly_guessed_letters)
 
     
@@ -126,28 +133,29 @@ class Hangman:
             
         """
         
-        #generating a random number that will be user as an Index to select a word from the list
-        self.word_to_find = self.possible_words[self.random.randint(0,len(self.possible_words)-1)]
+        #generating a random number that will be used as an Index to select a word from the list
+        self.word_to_find = self.possible_words[self.random.randint(0 , len(self.possible_words)-1)]
 
         #Setting up the hidden word
-        self.correctly_guessed_letters =self.re.sub("[a-z]", "_",self.word_to_find,count=0,flags=0)
+        self.correctly_guessed_letters = self.re.sub("[a-z]" , "_" , self.word_to_find, count = 0, flags = 0)
         
-        #formatting it into a list
-        self.correctly_guessed_letters= [*self.correctly_guessed_letters]
-        self.word_to_find= [*self.word_to_find]
+        #formatting it into a list or characters
+        self.correctly_guessed_letters = [*self.correctly_guessed_letters]
+        self.word_to_find = [*self.word_to_find]
         
         #to avoid confusion with a temp variable split word to find
-        self.word_to_find=self.word_to_find
+        self.word_to_find = self.word_to_find
 
         #Game loop
         while self.word_to_find != self.correctly_guessed_letters:
            
-            if self.lives >0:
-                
+            if self.lives > 0 :
                 self.play()
-            elif self.lives==0:
+
+            elif self.lives == 0 :
                 self.game_over()
                 break
+
             if self.word_to_find == self.correctly_guessed_letters:
                 self.well_played()
 
