@@ -21,7 +21,6 @@ class Hangman:
 
     """
     import random
-    #from typing import List
     import re
 
 
@@ -37,7 +36,7 @@ class Hangman:
         """
         Function which initializes the class object with all its attributes
         """
-        self.possible_words
+        #self.possible_words
         self.word_to_find
         self.lives
         self.correctly_guessed_letters
@@ -134,7 +133,8 @@ class Hangman:
         """
         
         #generating a random number that will be used as an Index to select a word from the list
-        self.word_to_find = self.possible_words[self.random.randint(0 , len(self.possible_words)-1)]
+        """"""""
+        self.word_to_find = Hangman.possible_words[self.random.randint(0 , len(Hangman.possible_words)-1)]
 
         #Setting up the hidden word
         self.correctly_guessed_letters = self.re.sub("[a-z]" , "_" , self.word_to_find, count = 0, flags = 0)
