@@ -36,7 +36,7 @@ class Hangman:
         """
         Function which initializes the class object with all its attributes
         """
-        #self.possible_words
+        
         self.word_to_find
         self.lives
         self.correctly_guessed_letters
